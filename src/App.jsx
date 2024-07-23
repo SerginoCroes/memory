@@ -6,7 +6,7 @@ export default function App() {
   const [score, setScore] = useState(0)
 
   async function requestCards(cb) {
-    const response = await fetch("https://deckofcardsapi.com/api/deck/new/draw/?count=12")
+    const response = await fetch("https://deckofcardsapi.com/api/deck/new/draw/?count=18")
     const json = await response.json()
     cb(json)
   }
@@ -30,7 +30,7 @@ export default function App() {
   return (
     <>
       <div className="score">
-        <p>{score !== 'You won' ? `Score: ${score}` : 'You won!'}</p>
+        <p>{score !== 'You won' ? `Score: ${score}` : 'You won! Click any card to reset the game'}</p>
       </div>
       <div className="cards">
         {cards.success && shuffle.map(index => <div key={cards.cards[index].code}><img src={cards.cards[index].image} onClick={() => clickCard(index)}/></div>)}
